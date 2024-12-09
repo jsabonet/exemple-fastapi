@@ -4,6 +4,15 @@ on: [push, pull_request]
 
 jobs:
   job1:
+    env:
+      DATABASE_HOSTANAME: localhost
+      DATABASE_PORT: 5432
+      DATABASE_PASSWORD: 1Jossilene%40@
+      DATABASE_NAME: fastapi
+      DATABASE_USERNAME: postgres
+      SECRET_KEY: 09d25e094Faa6ca2556c818166b7a956369370996F0facaa6cFe3bEseBd3e7
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
@@ -21,3 +30,4 @@ jobs:
           pip install pytest
           pytest
 
+  job2:
