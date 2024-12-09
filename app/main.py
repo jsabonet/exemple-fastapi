@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from . import models, schemas
 from .database import engine
 from .routers import post, user, auth, votes
@@ -13,9 +13,9 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
-    "http://localhost:8000",  # Permitir localhost
-    "http://localhost",       # Para outras portas
-    "http://127.0.0.1",       # Para IPv4
+    "http://localhost:8000",  
+    "http://localhost",      
+    "http://127.0.0.1",       
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -35,7 +35,13 @@ app.include_router(votes.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to my API"}
+    return {"message": " hello, I am pushing out to ubuntu "}
 
-
+# @app.post("/users/", response_model=schemas.UserOut, status_code=201)
+# def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+#     db_user = models.User(email=user.email, password=user.password)
+#     db.add(db_user)
+#     db.commit()
+#     db.refresh(db_user)
+#     return db_user
 
